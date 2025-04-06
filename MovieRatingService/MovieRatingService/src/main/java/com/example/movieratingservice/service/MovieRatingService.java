@@ -1,0 +1,22 @@
+package com.example.movieratingservice.service;
+
+import java.util.List;
+
+import com.example.movieratingservice.entity.MovieRating;
+
+public interface MovieRatingService {
+	public MovieRating saveMovieRating(MovieRating movieRating);
+
+	public List<MovieRating> getMovieRatingByUsingRatingId(int ratingId);
+
+	public List<MovieRating> getMovieRatingByUsingMovieId(int movieId);
+
+	public List<MovieRating> getMovieRatingByUsingMovieInfoId(int movieInfoId);
+
+	public List<MovieRating> getAllMovieRatings();
+
+	public MovieRating updateMovieRatingByUsingMovieRatingId(MovieRating movieRating, int ratingId);
+
+	public MovieRating deleteMovieRatingByUsingMovieRatingId(int ratingId);
+
+}

@@ -1,0 +1,21 @@
+package com.example.movieinfoservice.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.movieinfoservice.entity.MovieInfo;
+
+@Repository
+public interface MovieInfoRepository extends JpaRepository<MovieInfo, Integer> {
+
+	List<MovieInfo> findByMovieId(int movieId);
+
+	List<MovieInfo> findByMovieInfoId(int movieInfoId);
+
+	MovieInfo deleteMovieInfoByMovieInfoId(int movieInfoId);
+
+	MovieInfo findMovieByMovieInfoId(int movieInfoId);
+
+}

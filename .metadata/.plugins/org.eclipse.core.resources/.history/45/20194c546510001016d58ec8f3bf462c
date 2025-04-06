@@ -1,0 +1,53 @@
+package com.example.movieinfoservice.serviceimp;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.movieinfoservice.entity.MovieInfo;
+import com.example.movieinfoservice.repository.MovieInfoRepository;
+import com.example.movieinfoservice.service.MovieInfoService;
+@Service
+public class MovieInfoServiceImpl implements MovieInfoService {
+	@Autowired
+	private MovieInfoRepository movieInfoRepository;
+
+	@Override
+	public MovieInfo saveMovieInfo(MovieInfo movieInfo) {
+		// TODO Auto-generated method stub
+		return movieInfoRepository.save(movieInfo);
+	}
+
+	@Override
+	public List<MovieInfo> getMovieInfoByUsingMovieInfoId(int movieInfoId) {
+		// TODO Auto-generated method stub
+		return movieInfoRepository.findByMovieInfoId(movieInfoId);
+	}
+
+	@Override
+	public List<MovieInfo> getMovieInfoByUsingMovieId(int movieId) {
+		// TODO Auto-generated method stub
+		return movieInfoRepository.findByMovieId(movieId);
+	}
+
+	@Override
+	public List<MovieInfo> getAllMovieInfo() {
+		// TODO Auto-generated method stub
+		return movieInfoRepository.findAll();
+	}
+
+	@Override
+	public MovieInfo updateMobieByMovieInfoId(MovieInfo movieInfo, int movieInfoId) {
+		// TODO Auto-generated method stub
+		MovieInfo movieInfo1=movieInfoRepository.findByMovieInfoId(movieInfoId)
+		return null;
+	}
+
+	@Override
+	public MovieInfo deleteMobieByMovieId(int movieId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

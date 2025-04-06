@@ -1,0 +1,59 @@
+package com.example.movieratingservice.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.movieratingservice.entity.MovieRating;
+import com.example.movieratingservice.service.MovieRatingService;
+
+@RestController
+public class MovieRatingController {
+
+	@Autowired
+	private MovieRatingService movieRatingService;
+
+	@PostMapping("/saveMovieRating")
+	public ResponseEntity<MovieRating> saveMovieRating(@RequestBody MovieRating movieRating) {
+		return ResponseEntity.ok(movieRatingService.saveMovieRating(movieRating));
+	}
+
+	@GetMapping("/getMovieRatingByUsingRatingId/{ratingId}")
+	public ResponseEntity<List<MovieRating>> getMovieRatingByUsingRatingId(@PathVariable("ratingId") int ratingId) {
+		return ResponseEntity.ok(movieRatingService.getMovieRatingByUsingRatingId(ratingId));
+	}
+
+	@GetMapping("/getMovieRatingByUsingMovieId/{movieId}")
+	public List<MovieRating> getMovieRatingByUsingMovieId(@PathVariable("movieId") int movieId) {
+		return movieRatingService.getMovieRatingByUsingMovieId(movieId);
+	}
+
+	@GetMapping("/getMovieRatingByUsingMovieInfoId/{movieInfoId}")
+	public List<MovieRating> getMovieRatingByUsingMovieInfoId(@PathVariable("movieInfoId") int movieInfoId) {
+		return movieRatingService.getMovieRatingByUsingMovieInfoId(movieInfoId); // Corrected method call
+	}
+
+	@GetMapping("/getAllMovieRatings")
+	public ResponseEntity<List<MovieRating>> getAllMovieRatings() {
+		return ResponseEntity.ok(movieRatingService.getAllMovieRatings());
+	}
+
+	@PutMapping("/updateMovieRatingByUsingMovieRatingId/{ratingId}")
+	public ResponseEntity<MovieRating> updateMovieRatingByUsingMovieRatingId(@RequestBody MovieRating movieRating,
+			@PathVariable("ratingId") int ratingId) {
+		return ResponseEntity.ok(movieRatingService.updateMovieRatingByUsingMovieRatingId(movieRating, ratingId));
+	}
+
+	@DeleteMapping("/deleteMovieRatingByUsingMovieRatingId/{ratingId}")
+	public ResponseEntity<MovieRating> deleteMovieRatingByUsingMovieRatingId(@PathVariable("ratingId") int ratingId) {
+		return ResponseEntity.ok(movieRatingService.deleteMovieRatingByUsingMovieRatingId(ratingId));
+	}
+}

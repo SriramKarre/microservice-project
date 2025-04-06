@@ -1,0 +1,21 @@
+package com.example.movieratingservice.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.movieratingservice.entity.MovieRating;
+
+@Repository
+public interface MovieRatingRepository extends JpaRepository<MovieRating, Integer> {
+
+	public List<MovieRating> findByMovieInfoId(int movieInfoId);
+
+	public List<MovieRating> findByRatingId(int ratingId);
+
+	public List<MovieRating> findByMovieId(int movieId);
+
+	public MovieRating findMovieByRatingId(int ratingId);
+
+}

@@ -1,0 +1,7 @@
+package com.example.moviecatalogservice.exceptions;
+
+import org.springframework.aot.hint.RuntimeHintsRegistrar;
+
+public class MovieNotFoundException implements RuntimeEx{
+
+}

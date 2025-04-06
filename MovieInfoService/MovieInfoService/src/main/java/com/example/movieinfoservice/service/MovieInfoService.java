@@ -1,0 +1,20 @@
+package com.example.movieinfoservice.service;
+
+import java.util.List;
+
+import com.example.movieinfoservice.entity.MovieInfo;
+
+public interface MovieInfoService {
+	public MovieInfo saveMovieInfo(MovieInfo movieInfo);
+
+	public List<MovieInfo> getMovieInfoByUsingMovieInfoId(int movieInfoId);
+
+	public List<MovieInfo> getMovieInfoByUsingMovieId(int movieId);
+
+	public List<MovieInfo> getAllMovieInfo();
+
+	public MovieInfo updateMovieByMovieInfoId(MovieInfo movieInfo, int movieInfoId);
+
+	public MovieInfo deleteMovieByMovieInfoId(int movieInfoId);
+
+}

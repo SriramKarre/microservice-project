@@ -1,0 +1,45 @@
+package com.example.movieinfoservice.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.movieinfoservice.entity.User;
+import com.example.movieinfoservice.jwt.JwtAuthResponse;
+import com.example.movieinfoservice.jwt.JwtTokenProvider;
+import com.example.movieinfoservice.payloads.Login;
+import com.example.movieinfoservice.serviceimp.UserServiceImpl;
+
+@RestController
+public class AuthController {
+
+	@Autowired
+	private UserServiceImpl userService;
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	@Autowired
+	private JwtTokenProvider jwtTokenProvider;
+
+	@PostMapping("/register")
+	public ResponseEntity<User> createUser(@RequestBody User user) {
+		return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
+	}
+
+	@PostMapping("/login")
+	public ResponseEntity<JwtAuthResponse> loginUser(@RequestBody Login login) {
+		org.springframework.security.core.Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(login.getEmail(), login.getPassword()));
+
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+
+		String token = jwtTokenProvider.generateToken(authentication);
+
+		return ResponseEntity.ok(new JwtAuthResponse(token));
+	}
+}

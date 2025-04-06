@@ -1,0 +1,9 @@
+package com.example.moviecatalogservice.exceptions;
+
+public class ResourceNotFoundException extends RuntimeException {
+
+	private MovieNotFoundException(String message) {
+		super(message);
+	}
+
+}
