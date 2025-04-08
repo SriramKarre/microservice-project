@@ -2,6 +2,7 @@ package com.example.moviecatalogservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +13,7 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 @SpringBootApplication
 @EnableDiscoveryClient
 @OpenAPIDefinition
+@EnableCaching
 public class MovieCatalogServiceApplication {
 
 	public static void main(String[] args) {

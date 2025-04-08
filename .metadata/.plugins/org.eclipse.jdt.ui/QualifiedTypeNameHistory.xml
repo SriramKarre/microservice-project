@@ -30,9 +30,15 @@
     <fullyQualifiedTypeName name="com.example.movieinfoservice.entity.User"/>
     <fullyQualifiedTypeName name="io.swagger.v3.oas.models.OpenAPI"/>
     <fullyQualifiedTypeName name="io.swagger.v3.oas.models.info.Info"/>
-    <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.OpenAPIDefinition"/>
     <fullyQualifiedTypeName name="org.apache.tomcat.util.net.openssl.ciphers.Authentication"/>
     <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication"/>
     <fullyQualifiedTypeName name="com.mysql.cj.util.StringUtils"/>
     <fullyQualifiedTypeName name="java.util.Collection"/>
+    <fullyQualifiedTypeName name="de.codecentric.boot.admin.server.config.EnableAdminServer"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Cacheable"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="io.jsonwebtoken.lang.Arrays"/>
+    <fullyQualifiedTypeName name="org.springframework.cache.annotation.Cacheable"/>
+    <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.OpenAPIDefinition"/>
+    <fullyQualifiedTypeName name="org.springframework.cache.annotation.EnableCaching"/>
 </qualifiedTypeNameHistroy>

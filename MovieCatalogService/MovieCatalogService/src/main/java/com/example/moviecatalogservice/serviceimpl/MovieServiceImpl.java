@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -31,6 +34,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
+	@Cacheable(value = "movies", key = "#movieId")
 	public Movie getMovieByUsingMovieId(int movieId) {
 		// TODO Auto-generated method stub
 		MovieInfo[] infos = restTemplate.getForObject(
@@ -39,7 +43,7 @@ public class MovieServiceImpl implements MovieService {
 
 		Movie movie = movieRepository.findById(movieId)
 				.orElseThrow(() -> new ResourceNotFoundException("Movie Id Not Found:::   " + movieId));
-	
+
 		movie.setMovieInfoList(movieInfo);
 
 		MovieRating[] movieRating = restTemplate.getForObject(
@@ -52,12 +56,14 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
+	@Cacheable(value = "allMovies")
 	public List<Movie> getAllMovies() {
 		// TODO Auto-generated method stub
 		return movieRepository.findAll();
 	}
 
 	@Override
+	@CachePut(value = "movies", key = "#movieId")
 	public Movie updateMovieByMovieId(Movie movie, int movieId) {
 		// TODO Auto-generated method stub
 		Movie movie1 = movieRepository.findByMovieId(movieId);
@@ -75,6 +81,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
+	@CacheEvict(value = "movies", key = "#movieId")
 	public Movie deleteMovieByMovieId(int movieId) {
 		// TODO Auto-generated method stub
 		return movieRepository.deleteByMovieId(movieId);
